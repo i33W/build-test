@@ -10,7 +10,6 @@
 const { dialog } = require("electron");
 const { autoUpdater } = require("electron-updater");
 
-let updater;
 autoUpdater.autoDownload = false;
 
 autoUpdater.on("error", (error) => {
@@ -32,8 +31,6 @@ autoUpdater.on("update-available", () => {
       if (buttonIndex === 0) {
         autoUpdater.downloadUpdate();
       } else {
-        updater.enabled = true;
-        updater = null;
       }
     });
 });
@@ -43,8 +40,6 @@ autoUpdater.on("update-not-available", () => {
     title: "업데이트 확인",
     message: "현재 최신 버전입니다.",
   });
-  updater.enabled = true;
-  updater = null;
 });
 
 autoUpdater.on("update-downloaded", () => {
