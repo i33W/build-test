@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const { autoUpdater } = require("electron-updater");
 const path = require("path");
+const { checkForUpdates } = require("./updater");
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -17,25 +18,10 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
 
-  autoUpdater.on("error", () => {
-    console.log("error");
+  ipcMain.handle("updateCheck", (e) => {
+    checkForUpdates();
+    return "OK";
   });
-  autoUpdater.on("checking-for-update", () => {
-    console.log("checking-for-update");
-  });
-  autoUpdater.on("update-available", () => {
-    console.log("update-available");
-  });
-  autoUpdater.on("update-not-available", () => {
-    console.log("update-not-available");
-  });
-  autoUpdater.on("download-progress", () => {
-    console.log("download-progress");
-  });
-  autoUpdater.on("update-downloaded", () => {
-    console.log("update-downloaded");
-  });
-
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
