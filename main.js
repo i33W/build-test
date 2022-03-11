@@ -19,8 +19,7 @@ app.whenReady().then(() => {
   createWindow();
 
   ipcMain.handle("updateCheck", (e) => {
-    checkForUpdates();
-    return "OK";
+    return checkForUpdates();
   });
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

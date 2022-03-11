@@ -59,10 +59,4 @@ autoUpdater.on("update-downloaded", () => {
     });
 });
 
-// export this to MenuItem click callback
-function checkForUpdates(menuItem, focusedWindow, event) {
-  // updater = menuItem;
-  // updater.enabled = false;
-  autoUpdater.checkForUpdates();
-}
-module.exports.checkForUpdates = checkForUpdates;
+module.exports = autoUpdater.checkForUpdates();
