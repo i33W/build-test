@@ -1,0 +1,50 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "deploy": "electron-builder --win -p always"
+  },
+  "author": {
+    "url": "https://pf.kakao.com/_CBvNxb/chat",
+    "name": "BP LAB",
+    "email": "bpcode@naver.com"
+  },
+  "contributes": {
+    "name": "Hwang bomee",
+    "email": "hwangbomee@kakao.com"
+  },
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^16.0.6",
+    "electron-builder": "^22.14.5",
+    "electron-updater": "^4.6.5"
+  },
+  "build": {
+    "productName": "헬로",
+    "appId": "com.electron.hello",
+    "asar": true,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "i33w",
+        "repo": "build-test"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "./resources/installer/Icon.ico"
+    },
+    "nsis": {
+      "oneClick": true
+    },
+    "directories": {
+      "output": "./dist/"
+    },
+    "files": [
+      "!.vscode${/*}"
+    ]
+  }
+}
