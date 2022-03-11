@@ -17,6 +17,25 @@ function createWindow() {
 app.whenReady().then(() => {
   createWindow();
 
+  autoUpdater.on("error", () => {
+    console.log("error");
+  });
+  autoUpdater.on("checking-for-update", () => {
+    console.log("checking-for-update");
+  });
+  autoUpdater.on("update-available", () => {
+    console.log("update-available");
+  });
+  autoUpdater.on("update-not-available", () => {
+    console.log("update-not-available");
+  });
+  autoUpdater.on("download-progress", () => {
+    console.log("download-progress");
+  });
+  autoUpdater.on("update-downloaded", () => {
+    console.log("update-downloaded");
+  });
+
   app.on("activate", function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
