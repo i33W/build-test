@@ -25,12 +25,20 @@ autoUpdater.on("update-available", () => {
       type: "info",
       title: "업데이트 확인",
       message: "새로운 업데이트가 있습니다. 지금 다운로드 받으시겠습니까?",
-      buttons: ["Sure", "No"],
+      buttons: ["예", "아니요"],
     })
     .then((buttonIndex) => {
       if (buttonIndex === 0) {
+        dialog.showMessageBox({
+          title: "업데이트 다운로드",
+          message: "업데이트 다운로드를 시작합니다.",
+        });
         autoUpdater.downloadUpdate();
       } else {
+        dialog.showMessageBox({
+          title: "업데이트 다운로드",
+          message: "업데이트 다운로드를 취소하였습니다.",
+        });
       }
     });
 });
