@@ -31,13 +31,13 @@ autoUpdater.on("update-available", () => {
       if (buttonIndex === 0) {
         dialog.showMessageBox({
           title: "업데이트 다운로드",
-          message: "업데이트 다운로드를 시작합니다.",
+          message: "업데이트 다운로드를 시작합니다." + buttonIndex,
         });
         autoUpdater.downloadUpdate();
       } else {
         dialog.showMessageBox({
           title: "업데이트 다운로드",
-          message: "업데이트 다운로드를 취소하였습니다.",
+          message: "업데이트 다운로드를 취소하였습니다." + buttonIndex,
         });
       }
     });

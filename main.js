@@ -2,20 +2,21 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const autoUpdates = require("./updater");
 
-function createWindow() {
+function createWindow(v) {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    title: "test " + v,
   });
 
   mainWindow.loadFile("index.html");
 }
 
 app.whenReady().then(() => {
-  createWindow();
+  createWindow(app.getVersion());
 
   ipcMain.handle("updateCheck", async (e) => {
     await autoUpdates.checkForUpdates();
