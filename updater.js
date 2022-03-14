@@ -54,4 +54,4 @@ autoUpdater.on("update-downloaded", () => {
     });
 });
 
-module.exports = autoUpdater.checkForUpdates;
+module.exports = autoUpdater;
